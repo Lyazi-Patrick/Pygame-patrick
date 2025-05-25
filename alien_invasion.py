@@ -33,6 +33,11 @@ class AlienInvasion:
         while True:
             self._check_events()
             self.ship.update()
+            self._update_bullets()
+
+    def _update_bullets(self):
+            """Update position of bullets and get rid of old bullets."""
+            #Update bullet positions.
             self.bullets.update()
 
             #Get rid of the bullets that have dissappeared.
