@@ -50,7 +50,7 @@ class AlienInvasion:
          #Create the full fleet of aliens.
          for row_number in range(number_rows):
             for alien_number in range(number_aliens_x):
-                self._create_alien(alien_number)
+                self._create_alien(alien_number,row_number)
 
     def _create_alien(self, alien_number, row_number):
             #Create an alien and place it in the row.
