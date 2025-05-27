@@ -68,6 +68,7 @@ class AlienInvasion:
             self._check_events()
             self.ship.update()
             self._update_bullets()
+            self._update_aliens()
 
     def _update_bullets(self):
             """Update position of bullets and get rid of old bullets."""
@@ -81,6 +82,10 @@ class AlienInvasion:
             #print(len(self.bullets))
 
             self._update_screen()
+    
+    def _update_aliens(self):
+         """Update the positions of all aliens in the fleet."""
+         self.aliens.update()
 
     def _check_events(self):
             """Respond to keypresses and mouse events."""
