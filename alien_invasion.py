@@ -94,6 +94,9 @@ class AlienInvasion:
                       self.bullets.remove(bullet)
             #print(len(self.bullets))
 
+            self._check_bullet_alien_collisions()
+
+    def _check_bullet_alien_collisions(self):
             self._update_screen()
             #Check for any bullets that have hit aliens.
             #if so, get rid of the bullet and the alien.
@@ -108,6 +111,9 @@ class AlienInvasion:
          """Check if the fleet is at the edge,Update the positions of all aliens in the fleet."""
          self._check_fleet_edges()
          self.aliens.update()
+         #look for alien-ship collisions.
+         if pygame.sprite.spritecollideany(self.ship, self.aliens):
+            print('Ship Hit!')
 
     def _check_events(self):
             """Respond to keypresses and mouse events."""
