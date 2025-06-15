@@ -144,7 +144,8 @@ class AlienInvasion:
             #pause.
             sleep(0.5)
         else:
-            self.stats.game_active = False        
+            self.stats.game_active = False 
+            pygame.mouse.set_visible(True)       
 
     def _check_events(self):
             """Respond to keypresses and mouse events."""
