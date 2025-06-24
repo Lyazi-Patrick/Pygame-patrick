@@ -11,12 +11,18 @@ from alien import Alien
 from button import Button
 from main_menu import show_main_menu
 
+
 class AlienInvasion:
     """Overall class to manage game assets and behavior"""
 
     def __init__(self):
         """Initialize the game, and create game resources."""
         pygame.init()
+        #Background music
+        pygame.mixer.init()
+        pygame.mixer.music.load('sounds/Alien Spaceship Atmosphere.mp3')
+        pygame.mixer.music.set_volume(0.5)
+        pygame.mixer.music.play(-1)#-1 means play forever
         self.settings = Settings()
 
         """self.screen = pygame.display.set_mode((
