@@ -13,12 +13,12 @@ def show_main_menu(screen):
         screen.fill((0,0,0))
         screen.blit(title_text, (screen.get_width()//2 - title_text.get_width()//2, 150))
         screen.blit(start_text, (screen.get_width()//2 - start_text.get_width()//2, 250))
-        screen.blit(quit_text, (screen.get_width()//2 - quit_text.get()//2,300))
+        screen.blit(quit_text, (screen.get_width()//2 - quit_text.get_width()//2,300))
 
         pygame.display.flip()
 
         for event in pygame.event.get():
-            if event.type == pygame.Quit:
+            if event.type == pygame.quit:
                 pygame.quit()
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
