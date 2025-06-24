@@ -2,7 +2,13 @@ import pygame
 import sys
 
 def show_main_menu(screen):
-    """Display  the main menu screen."""
+    """Display  the main menu screen with background music."""
+    #Load and play menu music
+    pygame.mixer.music.load('sounds/Space Ambience.mp3')
+    pygame.mixer.music.set_volume(0.5)
+    pygame.mixer.music.play(-1)#Loops until enter is pressed.
+
+    #Fonts for the title and menu
     font = pygame.font.SysFont(None, 74)
     small_font = pygame.font.SysFont(None, 36)
     title_text = font.render("Alien Invasion", True, (255,255,255))

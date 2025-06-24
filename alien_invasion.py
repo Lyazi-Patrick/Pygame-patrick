@@ -97,6 +97,12 @@ class AlienInvasion:
         """Start the main loop for the game."""
         #Show the main menu screen before starting the game loop
         show_main_menu(self.screen)
+        #Switch to in-game music.
+        pygame.mixer.music.load('sounds/Alien Invasion.mp3')
+        pygame.mixer.music.set_volume(0.5)
+        pygame.mixer.music.play(-1)
+
+        #Game Loops
         while True:
             self._check_events()
             if self.stats.game_active:
