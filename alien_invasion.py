@@ -9,6 +9,7 @@ from ship import Ship
 from bullet import Bullet
 from alien import Alien
 from button import Button
+from main_menu import show_main_menu
 
 class AlienInvasion:
     """Overall class to manage game assets and behavior"""
@@ -88,6 +89,8 @@ class AlienInvasion:
 
     def run_game(self):
         """Start the main loop for the game."""
+        #Show the main menu screen before starting the game loop
+        show_main_menu(self.screen)
         while True:
             self._check_events()
             if self.stats.game_active:
