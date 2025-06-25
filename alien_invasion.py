@@ -44,6 +44,7 @@ class AlienInvasion:
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
+        self.paused = False
 
         self._create_fleet()
 
@@ -105,7 +106,7 @@ class AlienInvasion:
         #Game Loops
         while True:
             self._check_events()
-            if self.stats.game_active:
+            if self.stats.game_active and not self.paused:
                 self.ship.update()
                 self._update_bullets()
                 self._update_aliens()   
@@ -226,6 +227,12 @@ class AlienInvasion:
              sys.exit()
         elif event.key == pygame.K_SPACE:
             self._fire_bullet()
+        elif event.key == pygame.K_p:
+            self.paused = not self.paused
+            if self.paused:
+                pygame.mixer.music.pause()
+            else:
+             pygame.mixer.music.unpause()
     
     def _check_keyup_events(self, event):
         """Respond to key releases."""
@@ -263,6 +270,14 @@ class AlienInvasion:
             #Draw the play button if the game is inactive.
             if not self.stats.game_active:
                  self.play_button.draw_button()
+
+            #Show PAUSED message.
+            if self.paused:
+                 font = pygame.font.SysFont(None, 72)
+                 pause_text = font.render("PAUSED",True,(255,0,0))
+                 self.screen.blit(
+                      pause_text,(self.screen.get_width()//2 - pause_text.get_width()//2,self.screen.get_height()//2 - pause_text.get_height()//2)
+                 )
 
             #Make the most recently drawn screen visible.
             pygame.display.flip()
