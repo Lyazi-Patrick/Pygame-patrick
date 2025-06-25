@@ -195,7 +195,7 @@ class AlienInvasion:
             self.ship.center_ship()
 
             pygame.mixer.music.load('sounds/Space Ambience.mp3')
-            pyagame.mixer.music.play(-1)
+            pygame.mixer.music.play(-1)
             pygame.mouse.set_visible(False)
             self.stats.game_active = True      
 
