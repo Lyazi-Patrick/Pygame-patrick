@@ -10,6 +10,7 @@ from bullet import Bullet
 from alien import Alien
 from button import Button
 from main_menu import show_main_menu
+from game_over import show_game_over
 
 
 class AlienInvasion:
@@ -175,8 +176,28 @@ class AlienInvasion:
             #pause.
             sleep(0.5)
         else:
-            self.stats.game_active = False 
-            pygame.mouse.set_visible(True)       
+            """self.stats.game_active = False 
+            pygame.mouse.set_visible(True)"""
+            self.stats.game_active = False
+            pygame.mixer.music.stop()
+            pygame.mouse.set_visible(True)
+
+            show_game_over(self.screen) 
+            self.settings.initialize_dynamic_settings()
+            self.stats.reset_stats()
+            self.sb.prep_score()
+            self.sb.prep_level()
+            self.sb.prep_ships()
+
+            self.aliens.empty()
+            self.bullets.empty()
+            self._create_fleet()
+            self.ship.center_ship()
+
+            pygame.mixer.music.load('sounds/Space Ambience.mp3')
+            pyagame.mixer.music.play(-1)
+            pygame.mouse.set_visible(False)
+            self.stats.game_active = True      
 
     def _check_events(self):
             """Respond to keypresses and mouse events."""
